@@ -1,0 +1,12 @@
+ # image: kartoza/postgis
+
+db:
+  image: kartoza/postgis
+  environment:
+    - ALLOW_IP_RANGE=0.0.0.0/0
+    - POSTGRES_USER=rai
+    - POSTGRES_PASS=123
+    - POSTGRES_DBNAME=COMPUILDER
+  ports: 
+    - 5432:5432
+  container_name: COMPUILDERDATABASE
