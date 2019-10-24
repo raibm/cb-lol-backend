@@ -6,11 +6,12 @@ module.exports = {
 
         try {
             const champion = await Champion.create({ title, description});
+            return res.json(champion);
+
         } catch (error) {
             return res.status(400).json({ error: 'Falha ao adicionar campeão, tente novamente.' });
         }
 
-        return res.json(champion);
     },
 
     async index(req, res){

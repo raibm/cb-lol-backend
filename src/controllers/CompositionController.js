@@ -6,11 +6,11 @@ module.exports = {
 
         try {
             const composition = await Composition.create({ title, description});
+            return res.json(composition);
+            
         } catch (error) {
             return res.status(400).json({ error: 'Parece que tivemos um problema em salvar sua composição. :(' });
         }
-
-        return res.json(composition);
     },
 
     async index(req, res){

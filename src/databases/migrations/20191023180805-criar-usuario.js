@@ -7,7 +7,7 @@ module.exports = {
       login: { type: Sequelize.STRING, allowNull: false },
       password: { type: Sequelize.STRING, allowNull: false },
       email: { type: Sequelize.STRING, allowNull: false },
-      avatar: { type: Sequelize.BLON },
+      avatar: { type: Sequelize.STRING },
       created_at: { type: Sequelize.DATE, allowNull: false },
       updated_at: { type: Sequelize.DATE, allowNull: false }
     });

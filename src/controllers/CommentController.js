@@ -2,15 +2,16 @@ const Comment = require('../models/Comment');
 
 module.exports = {
     async store(req, res) {
-        const { comment } = req.body;
+        const { description } = req.body;
 
         try {
-            const comment = await Comment.create({ comment });
+            console.log(description);
+            const comment = await Comment.create({ description });
+            return res.json(comment);
+
         } catch (error) {
             return res.status(400).json({ error: 'Ops! Não deu para salvar seu comentário... desculpe. :(' });
         }
-
-        return res.json(comment);
     },
 
     async index(req, res) {
@@ -20,7 +21,7 @@ module.exports = {
 
     async destroy(req, res) {
         const { id } = req.params;
-        const comment = await Comment.findByPk({ id });
+        const comment = await Comment.findByPk(id);
 
         if (!comment) {
             return res.status(400).json({ error: 'Comentário não encontrado ' });
