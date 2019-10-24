@@ -1,20 +1,20 @@
 const Sequelize = require('sequelize');
-const dbConfiguracao = require('../configs/database');
+const dbConfig = require('../configs/database');
 
-const Usuario = require('../models/Usuario');
-const Campeao = require('../models/Campeao');
-const Comentario = require('../models/Comentario');
-const Composicao = require('../models/Composicao');
+const User = require('../models/User');
+const Champion = require('../models/Champion');
+const Comment = require('../models/Comment');
+const Composition = require('../models/Composition');
 
-const conexao = new Sequelize(dbConfiguracao);
+const connection = new Sequelize(dbConfig);
 
-Usuario.init(conexao);
-Campeao.init(conexao);
-Comentario.init(conexao);
-Composicao.init(conexao);
+User.init(connection);
+Champion.init(connection);
+Comment.init(connection);
+Composition.init(connection);
 
-Usuario.associate(conexao.models);
-Comentario.associate(conexao.models);
-Composicao.associate(conexao.models);
+User.associate(connection.models);
+Comment.associate(connection.models);
+Composition.associate(connection.models);
 
-module.exports = conexao;
+module.exports = connection;

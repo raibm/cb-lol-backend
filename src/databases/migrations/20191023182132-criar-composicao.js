@@ -2,49 +2,49 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('composicao', {
+    return queryInterface.createTable('compositions', {
       id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
-      titulo: { type: Sequelize.STRING, allowNull: false },
-      descricao: { type: Sequelize.STRING },
-      id_autor: {
+      title: { type: Sequelize.STRING, allowNull: false },
+      description: { type: Sequelize.STRING },
+      id_owner: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'usuario', key: 'id' },
+        references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      id_campeao_top: {
+      top_champion: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'campeao', key: 'id' },
+        references: { model: 'champions', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      id_campeao_jg: {
+      jg_champion: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'campeao', key: 'id' },
+        references: { model: 'champions', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      id_campeao_mid: {
+      mid_champion: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'campeao', key: 'id' },
+        references: { model: 'champions', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      id_campeao_adc: {
+      adc_champion: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'campeao', key: 'id' },
+        references: { model: 'champions', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      id_campeao_sup: {
+      sup_champion: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'campeao', key: 'id' },
+        references: { model: 'champions', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
@@ -54,6 +54,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-   return queryInterface.dropTable('composicao');
+   return queryInterface.dropTable('compositions');
   }
 };

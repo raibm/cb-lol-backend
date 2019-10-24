@@ -1,9 +1,9 @@
 const express = require('express');
-const rotas = require('./routes');
+const routes = require('./routes');
 require('./databases');
-const aplicacao = express();
+const app = express();
 
-aplicacao.use(express.json());
-aplicacao.use(rotas);
+app.use(express.json());
+app.use(routes);
 
-aplicacao.listen(process.env.PORT || 3333);
+app.listen(process.env.PORT || 3333);

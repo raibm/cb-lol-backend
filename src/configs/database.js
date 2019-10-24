@@ -1,9 +1,9 @@
 module.exports = {
     dialect: 'postgres',
-    host: '127.0.0.1',
-    username: 'rai',
-    password: '123',
-    database: 'COMPUILDER',
+    url: 'postgres://wpzvsvrn:7xGSLVgTzxkYiQXTkNygHbWE5-YquRFb@salt.db.elephantsql.com:5432/wpzvsvrn',
+    username: 'wpzvsvrn',
+    password: '7xGSLVgTzxkYiQXTkNygHbWE5-YquRFb',
+    database: 'wpzvsvrn',
     define: {
         timestamps: true,
         underscored: true
