@@ -6,4 +6,4 @@ const aplicacao = express();
 aplicacao.use(express.json());
 aplicacao.use(rotas);
 
-aplicacao.listen(1997);
+aplicacao.listen(process.env.PORT || 3333);
