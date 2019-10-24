@@ -14,7 +14,6 @@ Comentario.init(conexao);
 Composicao.init(conexao);
 
 Usuario.associate(conexao.models);
-Campeao.associate(conexao.models);
 Comentario.associate(conexao.models);
 Composicao.associate(conexao.models);
 
