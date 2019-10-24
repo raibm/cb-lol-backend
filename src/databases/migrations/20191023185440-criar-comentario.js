@@ -2,20 +2,20 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('comentario', {
+    return queryInterface.createTable('comments', {
       id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
-      comentario: { type: Sequelize.STRING, allowNull: false },
-      id_autor: {
+      comment: { type: Sequelize.STRING, allowNull: false },
+      id_owner: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'usuario', key: 'id' },
+        references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      id_composicao: {
+      id_composition: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'composicao', key: 'id' },
+        references: { model: 'compositions', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('comentario');
+    return queryInterface.dropTable('comments');
     }
 };
 

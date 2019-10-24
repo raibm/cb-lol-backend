@@ -1,11 +1,12 @@
 const express = require('express');
 
-const rotas = express.Router();
+const routes = express.Router();
 
-rotas.get('/', (req, res) => {
+routes.get('/', (req, res) => {
     return res.json({
-        message: 'Testando Compuilder'
+        message: 'Bem vindo a API do Compuilder, explorador.'
     });
 })
 
-module.exports = rotas;
+
+module.exports = routes;
