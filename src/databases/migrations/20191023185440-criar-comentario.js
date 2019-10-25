@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('comments', {
       id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
-      comment: { type: Sequelize.STRING, allowNull: false },
+      description: { type: Sequelize.STRING, allowNull: false },
       id_owner: {
         type: Sequelize.INTEGER,
         allowNull: false,
