@@ -5,11 +5,11 @@ module.exports = {
         const { description } = req.body;
 
         try {
-            console.log(description);
             const comment = await Comment.create({ description });
             return res.json(comment);
 
         } catch (error) {
+            console.log(error);
             return res.status(400).json({ error: 'Ops! Não deu para salvar seu comentário... desculpe. :(' });
         }
     },

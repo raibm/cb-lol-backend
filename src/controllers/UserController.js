@@ -16,5 +16,18 @@ module.exports = {
     async index(req, res){
         const users = await User.findAll();
         return res.json(users);
+    },
+
+    async delete(req, res){
+        const { id } = req.params;
+        const user = await User.findByPk(id);
+
+        if (!user) {
+            return res.status(400).json({ error: 'Usuario não encontrado.' });
+        }
+
+        const result = await User.destroy({ user });
+
+        return res.json(result);
     }
 };
