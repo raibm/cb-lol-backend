@@ -15,7 +15,7 @@ routes.get('/', (req, res) => {
 //Rotas de usuário
 routes.post('/users', UserController.store);
 routes.get('/users', UserController.index);
-routes.delete('/users', UserController.delete);
+routes.delete('/users/:id/', UserController.delete);
 
 //Rotas de campeão
 routes.get('/champions', ChampionController.index);

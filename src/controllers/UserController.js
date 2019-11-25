@@ -26,7 +26,7 @@ module.exports = {
             return res.status(400).json({ error: 'Usuario não encontrado.' });
         }
 
-        const result = await User.destroy({ user });
+        const result = await User.destroy({ where: {id: user.id }});
 
         return res.json(result);
     }
