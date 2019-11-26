@@ -27,7 +27,20 @@ module.exports = {
         }
 
         const result = await User.destroy({ where: {id: user.id }});
-
+        //ou isso
+        //user.destroy();
+        
         return res.json(result);
+    },
+
+    async getUser(req, res){
+        const { id } = req.body;
+        const user = await User.findByPk(id);
+
+        if(!user){
+            return res.status(400).json({ error: 'Usuario não encontrado.' });
+        }
+
+        return res.json(user);
     }
 };

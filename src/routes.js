@@ -17,8 +17,7 @@ routes.post('/users', UserController.store);
 routes.get('/users', UserController.index);
 routes.delete('/users/:id/', UserController.delete);
 
-//Rotas de campeão
-routes.get('/champions', ChampionController.index);
+routes.post('/compositions', CompositionController.store);
 
 //Rotas de comentário
 routes.post('/comments', CommentController.store);
