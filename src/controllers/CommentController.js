@@ -1,17 +1,29 @@
 const Comment = require('../models/Comment');
+const User = require('../models/User');
+const Composition = require('../models/Composition');
 
 module.exports = {
     async store(req, res) {
-        const { description } = req.body;
 
-        try {
-            const comment = await Comment.create({ description });
-            return res.json(comment);
+        const user = await User.findByPk(req.body.id_owner);
 
-        } catch (error) {
-            console.log(error);
-            return res.status(400).json({ error: 'Ops! Não deu para salvar seu comentário... desculpe. :(' });
+        if(!user){
+            return res.status(400).json({ error: 'Usuario não encontrado.' });
         }
+        
+        const comp = await Composition.findByPk(req.body.id_composition);
+
+        if(!comp){
+            return res.status(400).json({ error: 'Composição não encontrada.' });
+        }
+
+        const comment = await Comment.create({ description: req.body.description, id_owner: req.body.id_owner, id_composition: req.body.id_composition });
+        
+        if(!comment){
+            return res.status(400).json({ error: 'Falha ao criar seu comentário.' });
+        }
+
+        return res.json(comment);
     },
 
     async index(req, res) {
@@ -20,13 +32,13 @@ module.exports = {
     },
 
     async destroy(req, res) {
-        const { id } = req.params;
-        const comment = await Comment.findByPk(id);
+        const idComment= req.body.id;
+        const comment = await Comment.findByPk(idComment);
 
         if (!comment) {
             return res.status(400).json({ error: 'Comentário não encontrado ' });
         }
-        const result = await Comment.destroy({ comment });
+        const result = await comment.destroy();
 
         return res.json(result);
     },
@@ -44,8 +56,28 @@ module.exports = {
 
         comment.description = description;
 
-        await Comment.update(comment , { where: { id } });
+        await comment.update({ description });
 
         return res.json(comment);
+    },
+
+    async findAllByCompositionId(req, res){
+
+        const { id_composition } = req.params;
+
+        const composition = await Composition.findByPk(id_composition);
+
+        if(!composition){
+            return res.status(400).json({ error: 'Composição não encontrada.' });
+        }
+
+        const comments = await Comment.findAll({where: { id_composition }});
+
+
+        if(!comments){
+            return res.status(400).json({ error: 'Esta composição não tem comentários.' });
+        }
+
+        return res.json(comments);
     }
 };

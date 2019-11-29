@@ -39,14 +39,28 @@ module.exports = {
     },
 
     async delete(req, res) {
-        const { id } = req.body;
+        const { id } = req.params;
         const composition = await Composition.findByPk(id);
 
         if (!composition) {
             return res.status(400).json({ error: 'Composição não encontrada.' });
         }
 
-        composition.destroy();
+        await composition.destroy();
+
+        return res.json(composition);
+    },
+
+    async update(req, res){
+        const { id } = req.params;
+        const compToUpdateValues = req.body;
+        const composition = await Composition.findByPk(id);
+
+        if (!composition) {
+            return res.status(400).json({ error: 'Composição não encontrada.' });
+        }
+
+        await composition.update({ id_owner:  compToUpdateValues.id_owner, title: compToUpdateValues.title, description: compToUpdateValues.description, top_champion: compToUpdateValues.top_champion, jg_champion: compToUpdateValues.jg_champion, mid_champion: compToUpdateValues.mid_champion, adc_champion: compToUpdateValues.adc_champion, sup_champion: compToUpdateValues.sup_champion });
 
         return res.json(composition);
     }

@@ -42,5 +42,19 @@ module.exports = {
         }
 
         return res.json(user);
+    },
+
+    async getUserByLoginAndPassword(req, res){
+
+        const { login, password } = req.body;
+
+        const user = await User.findOne({where: {login, password}})
+
+        if(!user){
+            return res.status(400).json({ error: 'Falha ao realizar o login, usuário não encontrado.'})
+        }
+        
+        return res.json(user);
     }
+
 };
