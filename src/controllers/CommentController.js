@@ -4,6 +4,8 @@ const Composition = require('../models/Composition');
 
 module.exports = {
     async store(req, res) {
+        
+        console.log(req.body);
 
         const user = await User.findByPk(req.body.id_owner);
 
@@ -32,7 +34,7 @@ module.exports = {
     },
 
     async destroy(req, res) {
-        const idComment= req.body.id;
+        const idComment= req.params.id;
         const comment = await Comment.findByPk(idComment);
 
         if (!comment) {
@@ -71,7 +73,11 @@ module.exports = {
             return res.status(400).json({ error: 'Composição não encontrada.' });
         }
 
-        const comments = await Comment.findAll({where: { id_composition }});
+        const comments = await Comment.findAll({where: { id_composition }}, {  include: [{
+            model: User,
+            as: 'user',
+            attributes: 'avatar'
+        }]});
 
 
         if(!comments){

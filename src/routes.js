@@ -17,8 +17,10 @@ routes.post('/users', UserController.store);
 routes.get('/users', UserController.index);
 routes.delete('/users/:id', UserController.delete);
 routes.post('/login', UserController.getUserByLoginAndPassword);
+routes.get('/find-user/:id', UserController.getUser);
 
 routes.post('/compositions', CompositionController.store);
+routes.get('/compositions', CompositionController.index);
 routes.get('/compositions/:id', CompositionController.getAllCompositionsByUserId);
 routes.delete('/compositions/:id', CompositionController.delete);
 routes.put('/compositions/:id', CompositionController.update);
