@@ -6,7 +6,7 @@ class User extends Model {
             login: DataTypes.STRING,
             password: DataTypes.STRING,
             email: DataTypes.STRING,
-            avatar: DataTypes.STRING
+            avatar: DataTypes.INTEGER
         }, {
             sequelize: connection
         });

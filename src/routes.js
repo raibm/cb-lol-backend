@@ -15,13 +15,22 @@ routes.get('/', (req, res) => {
 //Rotas de usuário
 routes.post('/users', UserController.store);
 routes.get('/users', UserController.index);
+routes.delete('/users/:id', UserController.delete);
+routes.post('/login', UserController.getUserByLoginAndPassword);
+routes.get('/find-user/:id', UserController.getUser);
 
-//Rotas de campeão
-routes.get('/champions', ChampionController.index);
-
+routes.post('/compositions', CompositionController.store);
+routes.get('/compositions', CompositionController.index);
+routes.get('/compositions/:id', CompositionController.getAllCompositionsByUserId);
+routes.delete('/compositions/:id', CompositionController.delete);
+routes.put('/compositions/:id', CompositionController.update);
+// routes.put('/compositions/:id', Compo)
 //Rotas de comentário
 routes.post('/comments', CommentController.store);
 routes.get('/comments', CommentController.index);
+routes.delete('/comments/:id', CommentController.destroy);
+routes.put('/comments/:id', CommentController.update);
+routes.get('/comments/:id_composition', CommentController.findAllByCompositionId);
 // routes.delete('/comments/:id/')
 
 module.exports = routes;

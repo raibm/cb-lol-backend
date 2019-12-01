@@ -13,41 +13,11 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      top_champion: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: 'champions', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-      },
-      jg_champion: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: 'champions', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-      },
-      mid_champion: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: 'champions', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-      },
-      adc_champion: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: 'champions', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-      },
-      sup_champion: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: 'champions', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-      },
+      top_champion: { type: Sequelize.INTEGER },
+      jg_champion: { type: Sequelize.INTEGER },
+      mid_champion: { type: Sequelize.INTEGER },
+      adc_champion: { type: Sequelize.INTEGER },
+      sup_champion: { type: Sequelize.INTEGER },
       created_at: { type: Sequelize.DATE, allowNull: false },
       updated_at: { type: Sequelize.DATE, allowNull: false }
     });
